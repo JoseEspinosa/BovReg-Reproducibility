@@ -1,0 +1,10 @@
+title: "BovReg template for reproducible analysis"
+subtitle: "Nextflow RNA-seq demo - A pipeline for quantification of genomic features from short read data"
+
+report_header_info:
+    - Contact E-mail: 'Bovreg-wp3@ebi.ac.uk'
+    - Application Type: 'RNA-seq'
+    - Project Type: 'BovReg WP3 template'
+
+custom_logo_url: ' https://www.bovreg.eu'
+custom_logo_title: 'BovReg'
