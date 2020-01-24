@@ -4,18 +4,13 @@ This template aims to be a guide for the development of reproducible BovReg bioi
 
 The template runs an RNA-seq toy pipeline inspired by the [rnaseq-nf](https://github.com/nextflow-io/rnaseq-nf) demo pipeline using [Salmon](https://combine-lab.github.io/salmon/) and includes the following steps:
 
-1- Index transcriptome (Salmon)
+* Index transcriptome (Salmon)
 
-2- Quantifies transcripts, Maps RNA-seq reads (Salmon)
+* Quantifies transcripts, Maps RNA-seq reads (Salmon)
 
-3- Quality of RNA-seq data (FastQC)
+* Quality of RNA-seq data (FastQC)
 
-4- Generates HTML report with quality stats from FastQC and Salmon (MultiQC)
-
-[Link text](#some-id)
-
-
-## Introduction 
+* Generates HTML report with quality stats from FastQC and Salmon (MultiQC)
 
 To reproduce the results yielded by your analysis (and test that our standard pipelines are working as expected) we will need that you record the following details:
 
@@ -51,12 +46,11 @@ All the software that is needed to run the demo pipeline can be found as a docke
 
 Since we know that not all of you are using workflow managers, although we strongly advise to use them, we implemented two notebooks one which shows how to naively run the workflow and a second one that is run using Nextflow as workflow manager.
 
-#### <a name="docker"></a> 2.a.1 Docker container
+#### <a name="docker"></a> 2.a.i Docker container
 
-All the software tools used on the pipeline are available in a [Docker](http://www.docker.com) image on DockerHub [here](https://hub.docker.com/r/cbcrg/regressive-msa/) and the image is tested to be compatible with the [Singularity](http://singularity.lbl.gov/). You can follow this Dockerfile to create your container 
+All the software tools used on the pipeline are available in a [Docker](http://www.docker.com) image on DockerHub [here](https://hub.docker.com/r/cbcrg/bovreg-demo/) and the image is tested to be compatible with the [Singularity](http://singularity.lbl.gov/). You can follow this Dockerfile to create your container 
 
-
-#### <a name="conda"></a> 2.a.2 Conda environment
+#### <a name="conda"></a> 2.a.ii Conda environment
 
 ### <a name="scripts"></a> 2.b Custom scripts
 
@@ -68,9 +62,16 @@ All the software tools used on the pipeline are available in a [Docker](http://w
 
 ## Notebooks
 
+The index jupyter notebook can be found [here](notebook/00_BovReg_notebook_template.ipynb).
+
+
+**From here this is just a draft**
+
+
+
+
 
 ## Pipeline
-
 
 ## How to use this template
 
