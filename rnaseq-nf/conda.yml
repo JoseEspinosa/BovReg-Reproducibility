@@ -5,6 +5,7 @@ channels:
   - conda-forge
 dependencies:
   # Default bismark
+  - notebook=5.7.8
   - salmon=1.0.0
   - fastqc=0.11.5
   - multiqc=1.5
