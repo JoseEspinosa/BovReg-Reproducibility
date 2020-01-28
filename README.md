@@ -42,13 +42,13 @@ When performing a bioinformatic analysis a series of interrelated steps are orch
 
 To trace the versions of the programs used in your analyses, we recommend using an environment management system such as Conda or a containerization software such as Docker or Singularity. Any of these solutions can be used to sandbox software tools along with its dependencies, thus, enabling anyone to reproduce your results by running exactly the same computational environment. Although you can create your own containers, an additional advantage of this approach is that many bioinformatic tools are already available as pre-build containers in public repositories. You can download ready-to-run containers from the Biocontainers project. This community releases containers for bioinformatics tools in the three above-mentioned flavours (Conda, Docker and Singularity). 
 
-All the software that is needed to run the demo pipeline can be found as a docker container or as a conda environment
-
 Since we know that not all of you are using workflow managers, although we strongly advise to use them, we implemented two notebooks one which shows how to naively run the workflow and a second one that is run using Nextflow as workflow manager.
 
 #### <a name="docker"></a> 2.a.i Docker container
 
-All the software tools used on the pipeline are available in a [Docker](http://www.docker.com) image on DockerHub [here](https://hub.docker.com/r/cbcrg/bovreg-demo/) and the image is tested to be compatible with the [Singularity](http://singularity.lbl.gov/). You can follow this Dockerfile to create your container 
+All the software that is needed to run the pipeline can be found as a Conda environment or as a [Docker](http://www.docker.com) image on DockerHub [here](https://hub.docker.com/r/cbcrg/bovreg-demo/). This is image has been tested to be compatible with with [Singularity](http://singularity.lbl.gov/).
+
+You can follow this Dockerfile to create your container 
 
 #### <a name="conda"></a> 2.a.ii Conda environment
 
@@ -79,6 +79,10 @@ Using nextflow, docker and bla, bla
 
 Naive execution
 
+## Funding
+
+BovReg project has received funding from the European Union’s Horizon 2020 research and innovation program under Grant 
+Agreement ID. [815668](https://cordis.europa.eu/project/id/815668).
 
 
 
@@ -87,7 +91,6 @@ Naive execution
 
 
 
-
-
+## Drafts **to delete**
  nextflow demo that performs 
 A basic pipeline for quantification of genomic features from short read data implemented with Nextflow.
