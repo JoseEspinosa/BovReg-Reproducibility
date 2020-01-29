@@ -56,6 +56,7 @@ Channel
 
 
 process index {
+    label "salmon"
     tag "$transcriptome.simpleName"
 
     input:
@@ -72,6 +73,7 @@ process index {
 
 
 process quant {
+    label "salmon"
     tag "$pair_id"
 
     input:
