@@ -24,7 +24,7 @@ need that you record the following details:
 
     a. [External programs](#ext_pr)
 
-    1. [Docker containers](#docker)
+    1. [Containers](#containers)
 
     2. [Conda environment](#conda)
 
@@ -40,38 +40,62 @@ need that you record the following details:
 
 4. [An integral solution: Workflow managers](workflow_managers)
 
-Put also in our first example we deploy the pipeline as a bash script
+**TODO**: **Put also in our first example we deploy the pipeline as a bash script** 
 
 ## <a name="sw"></a> 1. Software
 
 Most of the times, to reproduce a computational result it is necessary to run exactly the same versions of the software 
-originally used. Hence, to trace the versions of the programs used in your analyses, we recommend using an environment 
-management system such as [Conda](https://docs.conda.io/projects/conda/en/latest/) or a containerization software such 
-as [Docker](http://www.docker.com) or Singularity [Singularity](http://singularity.lbl.gov/). Any of these solutions 
-can be used to sandbox software tools along with its dependencies, thus, enabling anyone to reproduce your results by 
+originally used. For this reason, it is convenient to track any piece of software that is used in your analysis and 
+this involve both third-party software and your own custon scripts and commands.       
+
+### <a name="ext_pr"></a> 1.a Third-party software
+
+With the term "third-party software", we refer to all the tools that are used in a bioinformatic analysis and
+that are develop by a different organization other than the original development group of the workflow. To trace the 
+versions of the programs used in your analyses, we recommend using an environment management system such as 
+[Conda](https://docs.conda.io/projects/conda/en/latest/) or a containerization software such as 
+[Docker](http://www.docker.com) or Singularity [Singularity](http://singularity.lbl.gov/). Any of these solutions can 
+be used to sandbox software tools along with its dependencies, thus, enabling anyone to reproduce your results by 
 running exactly the same computational environment. Although you can create your own containers, an additional 
 advantage of this approach is that many bioinformatic tools are already available as pre-build containers in public 
 repositories. You can download ready-to-run containers from the 
 [Biocontainers](https://biocontainers-edu.biocontainers.pro/en/latest/index.html) project. These community releases 
-containers for bioinformatics tools in the three above-mentioned flavours (Conda, Docker and Singularity).   
-   
-### <a name="ext_pr"></a> 1.a Third-party software
+containers for bioinformatics tools in the three above-mentioned flavours (Conda, Docker and Singularity).
 
-With the term "third-party software", we refer to all the tools that are used in a bioinformatic analysis and
-that are develop by a different group as opposed to scripts and/or programs that are developed add-hoc by the developer.
+---
+**NOTE**
+
+If you don't want to use any of the proposed solutions, as a minimum requirement to allow us reproduce your results, 
+you should at least note the name and the versions of the programs used in your workflow. 
+
+---
+
+#### <a name="containers"></a> 1.a.1 Containers
+
+In our template, all the software that is needed to run the pipeline can be found as a [Docker](http://www.docker.com) 
+image on DockerHub [here](https://hub.docker.com/r/cbcrg/bovreg-demo/). This image has been created using this 
+[Dockerfile](https://github.com/nextflow-io/rnaseq-nf/docker/Dockerfile). This image has been tested to be compatible 
+with with [Singularity](http://singularity.lbl.gov/).
+
+---
+**NOTE**
+
+We also provide an example of how to use biocontainers to run the pipeline using nextflow. If you want to see the 
+containers go to the config.  See the biocontainers profile inside the `nextflow.config` file 
+
+---
 
 
-All the software that is needed to run the pipeline can be found as a Conda environment or as a 
-[Docker](http://www.docker.com) image on DockerHub [here](https://hub.docker.com/r/cbcrg/bovreg-demo/). 
-This is image has been tested to be compatible with with [Singularity](http://singularity.lbl.gov/).
-
-
-#### <a name="docker"></a> 1.a.1 Docker container
-
-
-You can follow this Dockerfile to create your container 
+ 
 
 #### <a name="conda"></a> 1.a.2 Conda environment
+
+We also sandbox the software used in our template in a 
+[YML file](https://github.com/nextflow-io/rnaseq-nf/conda.yml). This file can be used to generate the conda 
+environment to run our example template.  
+
+
+  
 
 ### <a name="scripts"></a> 1.b Custom scripts
 
@@ -82,7 +106,7 @@ starting from the input raw data. Such a sequential set of steps is known as an 
 results yielded by an analysis workflow it is important to keep track of your workflow steps. Importantly, to reach the 
 same computational output is not only enough to record the main tools executed in a workflow but also keep track of the 
 parameters used for its execution, single commands, ad-hoc script or intermediary formatting step performed. That is why
-this template showcases how to record all the commands used in your analysis using a [Jupyter](http://jupyter.org/)  
+this template showcases how to record all the commands used in your analysis using a [Jupyter](http://jupyter.org/) 
 notebook. 
 
 ## <a name="data"></a> 3 Data
