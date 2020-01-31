@@ -7,26 +7,20 @@ standard pipelines. To this end, we created a series of templates using [Jupyter
 that you can adapt to share your own pipelines.
 
 The templates run an RNA-seq toy pipeline inspired by the [rnaseq-nf](https://github.com/nextflow-io/rnaseq-nf) demo 
-pipeline using [Salmon](https://combine-lab.github.io/salmon/) and includes the following steps:
-
-* Index transcriptome (Salmon)
-
-* Quantifies transcripts, Maps RNA-seq reads (Salmon)
-
-* Quality of RNA-seq data (FastQC)
-
-* Generates HTML report with quality stats from FastQC and Salmon (MultiQC)
+using [Salmon](https://combine-lab.github.io/salmon/).
 
 To reproduce the results yielded by your analysis (and test that our standard pipelines are working as expected) we will
 need that you record the following details:
 
 1. [Software](#sw)
 
-    a. [External programs](#ext_pr)
+    a. [Third-party software](#thirdPartySoftware)
 
-    1. [Containers](#containers)
+    1. [Docker](#docker)
+    
+    2. [Singularity](#singularity)
 
-    2. [Conda environment](#conda)
+    3. [Conda environment](#conda)
 
     b. [Custom scripts](#scripts)
     
@@ -48,7 +42,7 @@ Most of the times, to reproduce a computational result it is necessary to run ex
 originally used. For this reason, it is convenient to track any piece of software that is used in your analysis and 
 this involve both third-party software and your own custon scripts and commands.       
 
-### <a name="ext_pr"></a> 1.a Third-party software
+### <a name="thirdPartySoftware"></a> 1.a Third-party software
 
 With the term "third-party software", we refer to all the tools that are used in a bioinformatic analysis and
 that are develop by a different organization other than the original development group of the workflow. To trace the 
@@ -66,16 +60,17 @@ containers for bioinformatics tools in the three above-mentioned flavours (Conda
 **NOTE**
 
 If you don't want to use any of the proposed solutions, as a minimum requirement to allow us reproduce your results, 
-you should at least note the name and the versions of the programs used in your workflow. 
+you should note the name and the versions of the programs used in your workflow. 
 
 ---
 
-#### <a name="containers"></a> 1.a.1 Containers
+#### <a name="docker"></a> 1.a.1 Docker
 
 In our template, all the software that is needed to run the pipeline can be found as a [Docker](http://www.docker.com) 
-image on DockerHub [here](https://hub.docker.com/r/cbcrg/bovreg-demo/). This image has been created using this 
-[Dockerfile](https://github.com/nextflow-io/rnaseq-nf/docker/Dockerfile). This image has been tested to be compatible 
-with with [Singularity](http://singularity.lbl.gov/).
+image on DockerHub [here](https://hub.docker.com/r/cbcrg/bovreg-demo/). To generate a Docker image all the instructions 
+must be structured in a Dockerfile as explained 
+[here](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/). Our image has been created using 
+this [Dockerfile](https://github.com/nextflow-io/rnaseq-nf/docker/Dockerfile). 
 
 ---
 **NOTE**
@@ -85,19 +80,23 @@ containers go to the config.  See the biocontainers profile inside the `nextflow
 
 ---
 
+#### <a name="singularity"></a> 1.a.2 Singularity
 
- 
+Unlike Docker, Singularity can be run without root privileges, a key feature that makes it a more suitable container 
+engine in shared HPC environments. The good news is that Docker containers can be run with Singularity (see 
+[here](https://sylabs.io/guides/3.5/user-guide/singularity_and_docker.html) The image on our example has been tested to 
+be compatible with Singularity. 
 
-#### <a name="conda"></a> 1.a.2 Conda environment
+#### <a name="conda"></a> 1.a.3 Conda environment
 
 We also sandbox the software used in our template in a 
-[YML file](https://github.com/nextflow-io/rnaseq-nf/conda.yml). This file can be used to generate the conda 
-environment to run our example template.  
-
-
-  
+[YML file](https://github.com/nextflow-io/rnaseq-nf/conda.yml). This file can be used to 
+[generate the Conda environment](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-from-an-environment-yml-file) 
+to run our example pipeline.  
 
 ### <a name="scripts"></a> 1.b Custom scripts
+
+If you have use any custom script, ideally 
 
 ## <a name="workflow"></a> 2. Workflow
 
@@ -111,12 +110,40 @@ notebook.
 
 ## <a name="data"></a> 3 Data
 
+To test that the implementation of the pipeline can reproduce your results it is important that you share with us a 
+small sample dataset and the results you expect to generate when you run your analysis.
+
 ### <a name="input_data"></a> 3.a Test input data set
+
+The idea is that once we develop the standard pipeline, we can use a minimal dataset to assure that we actually are 
+reproducing the same results that you get from your original analysis. In our example, the sample dataset comes along 
+with the code in the GitHub [repository](https://github.com/BovReg/BovReg-Reproducibility/rnaseq-nf/data/ggal). Note 
+that to reduce the size of your sample dataset you can provide part of a chromosome as a reference and subsampled input 
+data.
 
 ### <a name="output_data"></a> 3.b Test output result
 
+To check that the pipeline is actually working correctly we will need that you share with us the expected results of 
+your analysis when the workflow is run using the sample data using a given set of parameters.
+
 ## <a name="workflow_managers"></a> 4. Workflow managers: An integral solution
 
+Workflow managers automatize many of the  discussed above
+
+TODO: parameters for software --> jupyter notebook or nextflow
+
+## Pipeline
+
+The templates run an RNA-seq toy pipeline inspired by the [rnaseq-nf](https://github.com/nextflow-io/rnaseq-nf) demo 
+using [Salmon](https://combine-lab.github.io/salmon/) and includes the following steps:
+
+* Index transcriptome (Salmon)
+
+* Quantifies transcripts, Maps RNA-seq reads (Salmon)
+
+* Quality of RNA-seq data (FastQC)
+
+* Generates HTML report with quality stats from FastQC and Salmon (MultiQC)
 
 ## Notebooks
 
@@ -129,9 +156,6 @@ The index jupyter notebook can be found [here](notebook/00_BovReg_notebook_templ
 Since we know that not all of you are using workflow managers, although we strongly advise to use them, we implemented 
 two notebooks one which shows how to naively run the workflow and a second one that is run using Nextflow as workflow 
 manager.
-
-
-## Pipeline
 
 ## How to use this template
 
