@@ -93,14 +93,15 @@ process index {
 process quant {
     label "salmon"
     tag "$pair_id"
+    publishDir params.outdir, pattern: "$pair_id/*.sf", saveAs: { filename -> 'quant_salmon_to_check.sf' }
 
     input:
     file index from index_ch
-    // set pair_id, file(reads) from read_pairs_ch
     set pair_id, file(reads) from read_pairs_chicken
 
     output:
     file(pair_id) into quant_ch
+    file ("$pair_id/*.sf") into result_to_check
 
     script:
     """
