@@ -76,7 +76,9 @@ this [Dockerfile](https://github.com/nextflow-io/rnaseq-nf/docker/Dockerfile).
 **NOTE**
 
 We also provide an example of how to use biocontainers to run the pipeline using nextflow. If you want to see the 
-containers go to the config.  See the biocontainers profile inside the `nextflow.config` file 
+containers go to the config.  See the 
+[biocontainers profile](https://github.com/BovReg/BovReg-Reproducibility/blob/c11643a323cc9d8e7d6b21911c1cc43f86133e9a/rnaseq-nf/nextflow.config#L39-L55)  
+inside the `nextflow.config` file. 
 
 ---
 
@@ -84,8 +86,8 @@ containers go to the config.  See the biocontainers profile inside the `nextflow
 
 Unlike Docker, Singularity can be run without root privileges, a key feature that makes it a more suitable container 
 engine in shared HPC environments. The good news is that Docker containers can be run with Singularity (see 
-[here](https://sylabs.io/guides/3.5/user-guide/singularity_and_docker.html) The image on our example has been tested to 
-be compatible with Singularity. 
+[here](https://sylabs.io/guides/3.5/user-guide/singularity_and_docker.html) for more information). The Docker image on 
+our example has been tested to be compatible with Singularity. 
 
 #### <a name="conda"></a> 1.a.3 Conda environment
 
@@ -96,7 +98,10 @@ to run our example pipeline.
 
 ### <a name="scripts"></a> 1.b Custom scripts
 
-If you have use any custom script, ideally 
+It will convenient that you share any custom script that you have used on your workflow with us. To reproduce your 
+results, we will need the exact version of the script that you ran. If you keep your scripts in a version control 
+system (such as GitHub, GitLab or other similar solutions), please point us to the state of the code that generate your
+results. We show   **TODO: Example of how to do this in the jupyter notebook with a `wget`.** 
 
 ## <a name="workflow"></a> 2. Workflow
 
@@ -128,7 +133,8 @@ your analysis when the workflow is run using the sample data using a given set o
 
 ## <a name="workflow_managers"></a> 4. Workflow managers: An integral solution
 
-Workflow managers automatize many of the  discussed above
+Workflow managers automatize many of the above discussed points. We show how to deploy our demo pipeline using nextflow.
+  
 
 TODO: parameters for software --> jupyter notebook or nextflow
 
