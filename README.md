@@ -77,7 +77,7 @@ this [Dockerfile](https://github.com/nextflow-io/rnaseq-nf/docker/Dockerfile).
 
 We also provide an example of how to use biocontainers to run the pipeline using nextflow. If you want to see the 
 containers go to the config.  See the 
-[biocontainers profile](https://github.com/BovReg/BovReg-Reproducibility/blob/c11643a323cc9d8e7d6b21911c1cc43f86133e9a/rnaseq-nf/nextflow.config#L39-L55)  
+[biocontainers profile](https://github.com/BovReg/BovReg-Reproducibility/blob/174ac547a2cb34ba40eb194bfaa715fc23e23735/rnaseq-nf/nextflow.config#L38-L57)  
 inside the `nextflow.config` file. 
 
 ---
@@ -113,6 +113,8 @@ parameters used for its execution, single commands, ad-hoc script or intermediar
 this template showcases how to record all the commands used in your analysis using a [Jupyter](http://jupyter.org/) 
 notebook. 
 
+TODO: parameters for software --> jupyter notebook or nextflow
+
 ## <a name="data"></a> 3 Data
 
 To test that the implementation of the pipeline can reproduce your results it is important that you share with us a 
@@ -133,10 +135,30 @@ your analysis when the workflow is run using the sample data using a given set o
 
 ## <a name="workflow_managers"></a> 4. Workflow managers: An integral solution
 
-Workflow managers automatize many of the above discussed points. We show how to deploy our demo pipeline using nextflow.
-  
+Workflow managers simplify the way to share a reproducible workflow.  We deployed our demo rna-seq pipeline using 
+a popular workflow manager, nextflow, to display how the above discussed points can be done:
 
-TODO: parameters for software --> jupyter notebook or nextflow
+1. Software: In the config file you can determine to use a 
+[container](https://github.com/BovReg/BovReg-Reproducibility/blob/174ac547a2cb34ba40eb194bfaa715fc23e23735/rnaseq-nf/nextflow.config#L31-L36) 
+or a [Conda environment](https://github.com/BovReg/BovReg-Reproducibility/blob/174ac547a2cb34ba40eb194bfaa715fc23e23735/rnaseq-nf/nextflow.config#L59-L61) 
+to run your pipeline. In the latter case, you can see how the `yml` file is also provided with the pipeline, this way by
+using the conda profile the environment will be created. Also, your custom scripts can be easily distributed with your
+pipeline since nextflow will include any script found in the bin directory into the `PATH` environmental variable   
+and in this way, they can be called by any of your processes without the need of referencing the full path as shown in this toy  
+[example](https://github.com/BovReg/BovReg-Reproducibility/blob/50b8e2da6118e861e86fa499af7357254b8eb68a/rnaseq-nf/main.nf#L60-L74) 
+that renames input files. 
+
+2. Workflow: Since workflow management systems are designed to automatically run a series of computational steps, this 
+is probably the most obvious aspect that workflow managers address. In the case of nextflow, the specific command used
+in a given step is defined by the `script` block as for example the 
+[command](https://github.com/BovReg/BovReg-Reproducibility/blob/50b8e2da6118e861e86fa499af7357254b8eb68a/rnaseq-nf/main.nf#L107) 
+used to create the index with Salmon.  
+
+3. Test input data set: We include a small input dataset in the Github repository that allows for the testing of the workflow 
+analysis. For this purpose, we used as a reference only a part of the chicken chromosome 1 and subsampled the `fastq` 
+files accordingly. 
+
+4. Test output result 
 
 ## Pipeline
 
@@ -187,3 +209,6 @@ A basic pipeline for quantification of genomic features from short read data imp
 
 TODO: add this --> If you don't have it already install Docker in your computer. Read more here.
 https://docs.docker.com/
+
+IDEA: MAYBE we can say there are two possible ways of keeping track of your analyses, notebooks and a workflow managers.
+This is to raw, just to show the idea.
