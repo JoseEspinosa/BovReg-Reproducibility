@@ -52,8 +52,26 @@ multiqc_file = file(params.multiqc)
 
 Channel
     .fromFilePairs( params.reads, checkExists:true )
-    .into { read_pairs_ch; read_pairs2_ch }
+    .set { read_pairs_ch }
 
+/*
+ * Using a bash script on bin folder to rename the files from "ggal" to "chicken"
+ */
+process rename_file {
+    label "salmon"
+    tag "$pair_id"
+
+    input:
+    set pair_id, file(reads) from read_pairs_ch
+
+    output:
+    set val('chicken_gut'), file('*.fq') into read_pairs_chicken, read_pairs2_chicken
+
+    script:
+    """
+    rename_file.sh
+    """
+}
 
 process index {
     label "salmon"
@@ -78,7 +96,8 @@ process quant {
 
     input:
     file index from index_ch
-    set pair_id, file(reads) from read_pairs_ch
+    // set pair_id, file(reads) from read_pairs_ch
+    set pair_id, file(reads) from read_pairs_chicken
 
     output:
     file(pair_id) into quant_ch
@@ -94,7 +113,7 @@ process fastqc {
     publishDir params.outdir
 
     input:
-    set sample_id, file(reads) from read_pairs2_ch
+    set sample_id, file(reads) from read_pairs2_chicken
 
     output:
     file("fastqc_${sample_id}_logs") into fastqc_ch
