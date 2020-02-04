@@ -28,7 +28,7 @@
  */
 
 /*
- * Default pipeline parameters. They can be overriden on the command line eg.
+ * Default pipeline parameters. They can be overridden on the command line eg.
  * given `params.foo` specify on the run command line `--foo some_value`.
  */
 
@@ -45,17 +45,15 @@ log.info """\
  outdir       : ${params.outdir}
  """
 
-
 transcriptome_file = file(params.transcriptome)
 multiqc_file = file(params.multiqc)
-
 
 Channel
     .fromFilePairs( params.reads, checkExists:true )
     .set { read_pairs_ch }
 
 /*
- * Using a bash script on bin folder to rename the files from "ggal" to "chicken"
+ * Rename files from "ggal" (*Gallus gallus*) to "chicken" (Bash script)
  */
 process rename_file {
     label "salmon"
@@ -69,10 +67,13 @@ process rename_file {
 
     script:
     """
-    rename_file.sh
+    rename_files.sh
     """
 }
 
+/*
+ * Index transcriptome with Salmon
+ */
 process index {
     label "salmon"
     tag "$transcriptome.simpleName"
@@ -89,11 +90,13 @@ process index {
     """
 }
 
-
+/*
+ * Quantifies transcripts, Maps RNA-seq reads (Salmon)
+ */
 process quant {
     label "salmon"
     tag "$pair_id"
-    publishDir params.outdir, pattern: "$pair_id/*.sf", saveAs: { filename -> 'quant_salmon_to_check.sf' }
+    publishDir params.outdir + "_salmon", pattern: "$pair_id/*.sf", saveAs: { filename -> 'quant.sf' }
 
     input:
     file index from index_ch
@@ -109,9 +112,12 @@ process quant {
     """
 }
 
+/*
+ * Quality of RNA-seq data (FastQC)
+ */
 process fastqc {
     tag "FASTQC on $sample_id"
-    publishDir params.outdir
+    publishDir params.outdir + "_fastqc"
 
     input:
     set sample_id, file(reads) from read_pairs2_chicken
@@ -127,8 +133,11 @@ process fastqc {
     """
 }
 
+/*
+ * Creates html report of Salmon and FastQC runs using multiQC
+ */
 process multiqc {
-    publishDir params.outdir, mode:'copy'
+    publishDir params.outdir + "_multiqc", mode:'copy'
     
     input:
     file('data*/*') from quant_ch.mix(fastqc_ch).collect()
@@ -145,6 +154,9 @@ process multiqc {
     """
 }
 
+/*
+ * Prints message when worflow is succesfully complete
+ */
 workflow.onComplete {
 	log.info ( workflow.success ? "\nDone! Open the following report in your browser --> $params.outdir/multiqc_report.html\n" : "Oops .. something went wrong" )
 }
