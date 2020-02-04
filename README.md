@@ -56,8 +56,8 @@ repositories. You can download ready-to-run containers from the
 [Biocontainers](https://biocontainers-edu.biocontainers.pro/en/latest/index.html) project. These community releases 
 containers for bioinformatics tools in the three above-mentioned flavours (Conda, Docker and Singularity).
 
-> **_Note:_**  If you don't want to use any of the proposed solutions, as a minimum requirement you should note the name and the 
-versions of the programs used in your workflow to allow us reproduce your results. 
+> **_Note:_**  If you don't want to use any of the proposed solutions, as a minimum requirement you should note the 
+name and the versions of the programs used in your workflow to allow us reproduce your results. 
 
 #### <a name="docker"></a> 1.a.i. Docker
 
@@ -67,10 +67,9 @@ must be structured in a Dockerfile as explained
 [here](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/). Our image has been created using 
 this [Dockerfile](https://github.com/nextflow-io/rnaseq-nf/docker/Dockerfile). 
 
-> **_Note:_** We also provide an example of how to use biocontainers to run the pipeline using nextflow. If you want to see the 
-containers go to the config.  See the 
-[biocontainers profile](https://github.com/BovReg/BovReg-Reproducibility/blob/174ac547a2cb34ba40eb194bfaa715fc23e23735/rnaseq-nf/nextflow.config#L38-L57)  
-inside the `nextflow.config` file.  
+> **_Note:_** We also provide an example of how to use biocontainers to run the pipeline using nextflow. See the 
+[biocontainers profile](https://github.com/BovReg/BovReg-Reproducibility/blob/174ac547a2cb34ba40eb194bfaa715fc23e23735/rnaseq-nf/nextflow.config#L38-L57) 
+inside the `nextflow.config` file to explore this option.
 
 #### <a name="singularity"></a> 1.a.ii. Singularity
 
@@ -91,7 +90,10 @@ to run our example pipeline.
 It will convenient that you share any custom script that you have used on your workflow with us. To reproduce your 
 results, we will need the exact version of the script that you ran. If you keep your scripts in a version control 
 system (such as GitHub, GitLab or other similar solutions), please point us to the state of the code that generate your
-results. In our template we show 
+results. In our demo, we include a first step of the workflow, performed by 
+[this bash script](https://github.com/BovReg/BovReg-Reproducibility/rnaseq-nf/bin/rename_file.sh), that renames the 
+input file to showcase how custom scripts can be shared. 
+  
 We show   **TODO: Example of how to do this in the jupyter notebook with a `wget`.** 
 
 ## <a name="workflow"></a> 2. Workflow
@@ -102,7 +104,7 @@ results yielded by an analysis workflow it is important to keep track of your wo
 same computational output is not only enough to record the main tools executed in a workflow but also keep track of the 
 parameters used for its execution, single commands, ad-hoc script or intermediary formatting step performed. That is why
 this template showcases how to record all the commands used in your analysis using a [Jupyter](http://jupyter.org/) 
-notebook. 
+notebook.
 
 ## <a name="data"></a> 3. Data
 
@@ -147,9 +149,9 @@ used to create the index with Salmon.
 workflow analysis. For this purpose, we used as a reference only a part of the chicken chromosome 1 and subsampled the 
 `fastq` files accordingly. 
 
-**3.b.** Test output result: The expected output of Salmon quantification (given the test input data set) can also be found 
-[here](https://github.com/nextflow-io/rnaseq-nf/data/result_sample) in the repository. When the pipeline is run the 
-corresponding file will be generated inside `results/quant_salmon_to_check.sf`.
+**3.b.** Test output result: The expected output of Salmon quantification (given the test input data set) can also be 
+found in the [repository](https://github.com/nextflow-io/rnaseq-nf/data/result_sample). When the pipeline is run the 
+corresponding file will be generated inside `results/quant.sf`.
 
 ## Pipeline
 
@@ -168,9 +170,8 @@ using [Salmon](https://combine-lab.github.io/salmon/) and includes the following
 
 ## Notebooks templates
 
-Since we know that not all of you are using workflow managers, although we strongly advise its use, we implemented 
-several Jupyter notebooks to show how to enclose your analysis using the different approaches discussed above. Any of 
-them, replicates the results obtained using the RNA-seq demo analysis:
+We include several notebooks on this template so that you can choose which one fits better with your preferences. 
+Nevertheless, any of them produces the same results:
 
 * [Naive execution including the workflow commands directly on the jupyter notebook](notebook/01_naive_execution.ipynb).
 
@@ -178,11 +179,22 @@ them, replicates the results obtained using the RNA-seq demo analysis:
 
 * [Execution using nextflow and Conda](notebook/03_nxf_execution_conda.ipynb).
 
+## How to use the templates
+
+If you don't have Jupyter installed, first follow [this](https://jupyter.org/install) instructions. Once Jupyter is 
+installed, place yourself on the main repository folder and launch jupyter:
+
+```bash
+cd /your_path/BovReg-Reproducibility/notebook
+jupyter notebook
+```
+
+From there, you can choose which file you want to explore and/or run. 
+   
 ## Funding
 
 BovReg project has received funding from the European Union’s Horizon 2020 research and innovation program under Grant 
 Agreement ID. [815668](https://cordis.europa.eu/project/id/815668).
-
 
 ## Drafts **to delete**
  nextflow demo that performs 
