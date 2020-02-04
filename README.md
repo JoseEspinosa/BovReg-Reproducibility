@@ -56,13 +56,8 @@ repositories. You can download ready-to-run containers from the
 [Biocontainers](https://biocontainers-edu.biocontainers.pro/en/latest/index.html) project. These community releases 
 containers for bioinformatics tools in the three above-mentioned flavours (Conda, Docker and Singularity).
 
----
-**Note**
-
-If you don't want to use any of the proposed solutions, as a minimum requirement you should note the name and the 
+> **_Note:_**  If you don't want to use any of the proposed solutions, as a minimum requirement you should note the name and the 
 versions of the programs used in your workflow to allow us reproduce your results. 
-
----
 
 #### <a name="docker"></a> 1.a.i. Docker
 
@@ -72,15 +67,10 @@ must be structured in a Dockerfile as explained
 [here](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/). Our image has been created using 
 this [Dockerfile](https://github.com/nextflow-io/rnaseq-nf/docker/Dockerfile). 
 
----
-**Note**
-
-We also provide an example of how to use biocontainers to run the pipeline using nextflow. If you want to see the 
+> **_Note:_** We also provide an example of how to use biocontainers to run the pipeline using nextflow. If you want to see the 
 containers go to the config.  See the 
 [biocontainers profile](https://github.com/BovReg/BovReg-Reproducibility/blob/174ac547a2cb34ba40eb194bfaa715fc23e23735/rnaseq-nf/nextflow.config#L38-L57)  
-inside the `nextflow.config` file. 
-
----
+inside the `nextflow.config` file.  
 
 #### <a name="singularity"></a> 1.a.ii. Singularity
 
@@ -91,7 +81,7 @@ our example has been tested to be compatible with Singularity.
 
 #### <a name="conda"></a> 1.a.iii. Conda environment
 
-We also sandbox the software used in our template in a 
+We also sandboxed the software used in our template in a 
 [YML file](https://github.com/nextflow-io/rnaseq-nf/conda.yml). This file can be used to 
 [generate the Conda environment](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-from-an-environment-yml-file) 
 to run our example pipeline.  
@@ -101,7 +91,8 @@ to run our example pipeline.
 It will convenient that you share any custom script that you have used on your workflow with us. To reproduce your 
 results, we will need the exact version of the script that you ran. If you keep your scripts in a version control 
 system (such as GitHub, GitLab or other similar solutions), please point us to the state of the code that generate your
-results. We show   **TODO: Example of how to do this in the jupyter notebook with a `wget`.** 
+results. In our template we show 
+We show   **TODO: Example of how to do this in the jupyter notebook with a `wget`.** 
 
 ## <a name="workflow"></a> 2. Workflow
 
@@ -202,3 +193,4 @@ https://docs.docker.com/
 
 IDEA: MAYBE we can say there are two possible ways of keeping track of your analyses, notebooks and a workflow managers.
 This is to raw, just to show the idea.
+
