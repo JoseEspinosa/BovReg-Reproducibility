@@ -158,5 +158,5 @@ process multiqc {
  * Prints message when worflow is succesfully complete
  */
 workflow.onComplete {
-	log.info ( workflow.success ? "\nDone! Open the following report in your browser --> $params.outdir_multiqc/multiqc_report.html\n" : "Oops .. something went wrong" )
+	log.info ( workflow.success ? "\nDone! Open the following report in your browser --> $params.outdir" + "_multiqc/multiqc_report.html\n" : "Oops .. something went wrong" )
 }
