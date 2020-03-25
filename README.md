@@ -1,13 +1,57 @@
 # BovReg Reproducibility
 
+## Table of contents
+
+* [Introduction](#Introduction)
+* [Notebooks templates](#Notebooks-templates)
+* [Workflow details to be recorded](#Workflow-details-to-be-recorded)
+
+    * [1 - Software](#sw)
+
+        * [a - Third-party software](#thirdPartySoftware)
+
+            * [1 - Docker](#docker)
+    
+            * [2 - Singularity](#singularity)
+
+            * [3 - Conda environment](#conda)
+
+        * [b - Custom scripts](#scripts)
+    
+    * [2 - Workflow](#workflow)
+
+    * [3 - Data](#data)
+
+        * [a - Test input data set](#input_data)
+
+        * [b - Test output result](#output_data)
+
+    * [4 - An integral solution: Workflow managers](workflow_managers)
+
+
+## Introduction
+
 This template aims to be a guide for the development of reproducible BovReg bioinformatic analyses. Since WP3 standard 
-pipelines will be built on top of the analyses previously performed by other packages, the aim of these guidelines is to 
+pipelines will be built on top of the analyses previously performed by the other WPs, the aim of these guidelines is to 
 provide a set of minimum good practices to enable that the results obtained by our partners can be reproduced by the 
-standard pipelines. To this end, we created a series of templates using [Jupyter](http://jupyter.org/) notebooks 
-that you can adapt to share your own pipelines.
+standard pipelines. To this end, we created a series of templates using [Jupyter](http://jupyter.org/) notebooks. These
+templates illustrate the different approaches you can use to share with us your bioinformatics analyses.
 
 The templates run an RNA-seq toy pipeline inspired by the [rnaseq-nf](https://github.com/nextflow-io/rnaseq-nf) demo 
 using [Salmon](https://combine-lab.github.io/salmon/).
+
+## Notebooks templates
+
+We include several notebooks on this template so that you can choose which one fits better with your preferences. 
+Nevertheless, any of them produces the same results:
+
+* [Naive execution including the workflow bash commands directly on the jupyter notebook](notebook/01_naive_execution.ipynb).
+
+* [Execution using nextflow and Docker](notebook/02_nxf_execution_docker.ipynb).
+
+* [Execution using nextflow and Conda](notebook/03_nxf_execution_conda.ipynb).
+
+## Workflow details to be recorded: 
 
 To reproduce the results yielded by your analysis (and test that our standard pipelines are working as expected) we will
 need that you record the following details:
@@ -34,13 +78,11 @@ need that you record the following details:
 
 4. [An integral solution: Workflow managers](workflow_managers)
 
-**TODO**: **Put also in our first example we deploy the pipeline as a bash script** 
-
 ## <a name="sw"></a> 1. Software
 
 Most of the times, to reproduce a computational result it is necessary to run exactly the same versions of the software 
-originally used. For this reason, it is convenient to track any piece of software that is used in your analysis and 
-this involve both third-party software and your own custon scripts and commands.       
+originally used. For this reason, it is convenient to track any piece of software that has been run by your workflow and 
+this involve both third-party software and your own custom scripts, and the exact launched commands.       
 
 ### <a name="thirdPartySoftware"></a> 1.a. Third-party software
 
@@ -173,7 +215,7 @@ using [Salmon](https://combine-lab.github.io/salmon/) and includes the following
 We include several notebooks on this template so that you can choose which one fits better with your preferences. 
 Nevertheless, any of them produces the same results:
 
-* [Naive execution including the workflow commands directly on the jupyter notebook](notebook/01_naive_execution.ipynb).
+* [Naive execution including the workflow bash commands directly on the jupyter notebook](notebook/01_naive_execution.ipynb).
 
 * [Execution using nextflow and Docker](notebook/02_nxf_execution_docker.ipynb).
 
