@@ -6,18 +6,18 @@
 * [Workflow details to be recorded](#Workflow-details-to-be-recorded)
     * [1 - Software](#sw)
         * [a - Third-party software](#thirdPartySoftware)
-            * [1 - Docker](#docker)
-            * [2 - Singularity](#singularity)
-            * [3 - Conda environment](#conda)
+            * [i - Docker](#docker)
+            * [ii - Singularity](#singularity)
+            * [iii - Conda environment](#conda)
         * [b - Custom scripts](#scripts)    
     * [2 - Workflow](#workflow)
     * [3 - Data](#data)
         * [a - Test input data set](#input_data)
         * [b - Test output result](#output_data)
     * [4 - An integral solution: Workflow managers](#workflow-managers)
-* [Notebooks templates](#Notebooks-templates)
+* [Template notebooks](#Template-notebooks)
     * [1 - Pipeline](#1---Pipeline)
-    * [2 - Notebooks templates](#2---Notebooks-templates)
+    * [2 - Template jupyter notebooks](#2---Template-jupyter-notebooks)
     * [3 - How to run the notebooks](#3---How-to-run-the-template)
 
 ## Introduction
@@ -96,8 +96,6 @@ system (such as GitHub, GitLab or other similar solutions), please point us to t
 results. In our demo, we include a first step of the workflow, performed by 
 [this bash script](https://github.com/BovReg/BovReg-Reproducibility/rnaseq-nf/bin/rename_file.sh), that renames the 
 input file to showcase how custom scripts can be shared. 
-  
-We show   **TODO: Example of how to do this in the jupyter notebook with a `wget`.** 
 
 ### <a name="workflow"></a> 2. Workflow
 
@@ -156,7 +154,7 @@ workflow analysis. For this purpose, we used as a reference only a part of the c
 found in the [repository](https://github.com/nextflow-io/rnaseq-nf/data/result_sample). When the pipeline is run the 
 corresponding file will be generated inside `results/quant.sf`.
 
-## Notebooks templates
+## Template notebooks
 
 ### 1 - Pipeline
 
