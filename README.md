@@ -18,7 +18,7 @@
 * [Template notebooks](#Template-notebooks)
     * [1 - Pipeline](#1---Pipeline)
     * [2 - Template jupyter notebooks](#2---Template-jupyter-notebooks)
-    * [3 - How to run the notebooks](#3---How-to-run-the-template)
+    * [3 - How to run the notebooks](#3---how-to-run-the-notebooks)
 
 ## Introduction
 
@@ -51,7 +51,7 @@ With the term "third-party software", we refer to all the tools that are used in
 that are develop by a different organization other than the original development group of the workflow. To trace the 
 versions of the programs used in your analyses, we recommend using an environment management system such as 
 [Conda](https://docs.conda.io/projects/conda/en/latest/) or a containerization software such as 
-[Docker](http://www.docker.com) or Singularity [Singularity](http://singularity.lbl.gov/). Any of these solutions can 
+[Docker](http://www.docker.com) or [Singularity](http://singularity.lbl.gov/). Any of these solutions can 
 be used to sandbox software tools along with its dependencies, thus, enabling anyone to reproduce your results by 
 running exactly the same computational environment. Although you can create your own containers, an additional 
 advantage of this approach is that many bioinformatic tools are already available as pre-build containers in public 
@@ -134,7 +134,7 @@ a popular workflow manager, nextflow, to display how the above discussed points 
 [container](https://github.com/BovReg/BovReg-Reproducibility/blob/174ac547a2cb34ba40eb194bfaa715fc23e23735/rnaseq-nf/nextflow.config#L31-L36) 
 or a [Conda environment](https://github.com/BovReg/BovReg-Reproducibility/blob/174ac547a2cb34ba40eb194bfaa715fc23e23735/rnaseq-nf/nextflow.config#L59-L61) 
 to run your pipeline. In the latter case, you can see how the `yml` file is also provided with the pipeline, this way by
-using the conda profile the environment will be created. Also, your custom scripts can be easily distributed with your
+using the Conda profile the environment will be created. Also, your custom scripts can be easily distributed with your
 pipeline since nextflow will include any script found in the bin directory into the `PATH` environmental variable   
 and in this way, they can be called by any of your processes without the need of referencing the full path as shown in this toy  
 [example](https://github.com/BovReg/BovReg-Reproducibility/blob/50b8e2da6118e861e86fa499af7357254b8eb68a/rnaseq-nf/main.nf#L60-L74) 
@@ -177,7 +177,7 @@ We included several notebooks being each of them an example of the different app
 that fits better with your preferences and use it as a template to share your workflow. Note that any of the notebooks
 produce the same results:
 
-* [Naive execution including the workflow bash commands directly on the jupyter notebook](notebook/01_naive_execution.ipynb).
+* [Execution using Bash](notebook/01_naive_execution.ipynb).
 
 * [Execution using nextflow and Docker](notebook/02_nxf_execution_docker.ipynb).
 
