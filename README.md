@@ -177,8 +177,9 @@ using [Salmon](https://combine-lab.github.io/salmon/) and includes the following
 ### 2 - Template jupyter notebooks
 
 We included several notebooks being each of them an example of the different approaches discussed. Choose the notebook 
-that fits better with your preferences and use it as a template to share your workflow. Note that any of the notebooks
-produce the same results:
+that fits better with your preferences and use it as a template to share your workflow. Follow instructions in 
+the [next section](#3---how-to-run-the-notebooks)next to run the notebooks. Note that any of the notebooks produce the 
+same results:
 
 * [Execution using Bash](notebook/01_naive_execution.ipynb).
 
