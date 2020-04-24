@@ -29,10 +29,10 @@ standard pipelines. To this end, we discuss which are the details we need that y
 computational analyses. To ease this procedure, we created a series of templates using [Jupyter](http://jupyter.org/)
 notebooks. These templates illustrate the different approaches you can use to share with us your bioinformatics analyses.
 
-> **_Note:_**  The templates run an RNA-seq toy pipeline inspired by the 
+> **_Note:_**  The template run an RNA-seq toy pipeline inspired by the 
 [rnaseq-nf](https://github.com/nextflow-io/rnaseq-nf) demo using [Salmon](https://combine-lab.github.io/salmon/) to 
 quantify RNA-seq transcripts. In addition, the pipeline runs 
-FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) and 
+[FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) and 
 [MultiQC](https://multiqc.info/) to obtain quality measures.
 
 ## Workflow details to be recorded: 
@@ -172,7 +172,7 @@ using [Salmon](https://combine-lab.github.io/salmon/) and includes the following
 
 * Quality of RNA-seq data (FastQC)
 
-* Creates HTML report of Salmon and FastQC runs using multiQC
+* Creates HTML report of Salmon and FastQC runs using MultiQC
 
 ### 2 - Template jupyter notebooks
 
