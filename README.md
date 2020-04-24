@@ -14,7 +14,7 @@
     * [3 - Data](#data)
         * [a - Test input data set](#input_data)
         * [b - Test output result](#output_data)
-    * [4 - An integral solution: Workflow managers](#workflow-managers)
+    * [4 - An integral solution: Workflow managers](#workflow_managers)
 * [Template notebooks](#Template-notebooks)
     * [1 - Pipeline](#1---Pipeline)
     * [2 - Template jupyter notebooks](#2---Template-jupyter-notebooks)
@@ -30,7 +30,10 @@ computational analyses. To ease this procedure, we created a series of templates
 notebooks. These templates illustrate the different approaches you can use to share with us your bioinformatics analyses.
 
 > **_Note:_**  The templates run an RNA-seq toy pipeline inspired by the 
-[rnaseq-nf](https://github.com/nextflow-io/rnaseq-nf) demo using [Salmon](https://combine-lab.github.io/salmon/).
+[rnaseq-nf](https://github.com/nextflow-io/rnaseq-nf) demo using [Salmon](https://combine-lab.github.io/salmon/) to 
+quantify RNA-seq transcripts. In addition, the pipeline runs 
+FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) and 
+[MultiQC](https://multiqc.info/) to obtain quality measures.
 
 ## Workflow details to be recorded: 
 
@@ -53,9 +56,9 @@ versions of the programs used in your analyses, we recommend using an environmen
 [Conda](https://docs.conda.io/projects/conda/en/latest/) or a containerization software such as 
 [Docker](http://www.docker.com) or [Singularity](http://singularity.lbl.gov/). Any of these solutions can 
 be used to sandbox software tools along with its dependencies, thus, enabling anyone to reproduce your results by 
-running exactly the same computational environment. Although you can create your own containers, an additional 
-advantage of this approach is that many bioinformatic tools are already available as pre-build containers in public 
-repositories. You can download ready-to-run containers from the 
+running exactly the workflow in the same computational environment. Although you can create your 
+own containers, an additional advantage of this approach is that many bioinformatic tools are already available as 
+pre-build containers in public repositories. You can download ready-to-run containers from the 
 [Biocontainers](https://biocontainers-edu.biocontainers.pro/en/latest/index.html) project. These community releases 
 containers for bioinformatics tools in the three above-mentioned flavours (Conda, Docker and Singularity).
 
